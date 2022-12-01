@@ -1,10 +1,6 @@
 package com.example.crud.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,12 +18,13 @@ import lombok.ToString;
 public class Student {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
+	@SequenceGenerator(name = "SEQ", sequenceName = "STUDENT_SEQ", allocationSize = 1)
 	private Long id;
-	
+
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "name")
 	private String name;
 	
